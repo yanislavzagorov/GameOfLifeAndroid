@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.gameoflifeandroid.TextQrGol">
 
-    <!--
-    <com.example.android.gameoflifeandroid.GameViewer android:id="@+id/game" />
-    -->
-    
+    <com.example.android.gameoflifeandroid.GameViewer android:id="@+id/game" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@color/colorTesting"/>
 </android.support.constraint.ConstraintLayout>
 

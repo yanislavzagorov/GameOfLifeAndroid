@@ -1,11 +1,18 @@
-import android.view.View;
+package com.example.android.gameoflifeandroid;
 
-/**
- * Created by yanis on 16-Apr-17.
- */
+import android.graphics.Canvas;
+import android.view.View;
 
 public class GameViewer extends View {
 
+    @Override
+    public void onDraw(Canvas canvas) {
+
+    }
+
+}
+
+class GameViewer extends View {
     @Override
     public void onDraw(Canvas canvas) {
 
