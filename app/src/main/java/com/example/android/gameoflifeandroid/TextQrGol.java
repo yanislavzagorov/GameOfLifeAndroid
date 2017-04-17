@@ -1,6 +1,7 @@
 package com.example.android.gameoflifeandroid;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -29,26 +30,34 @@ class GameViewer extends View {
     Paint deadCellPaint = new Paint();
     Rectangle aliveCell = new Rectangle();
     Rectangle deadCell = new Rectangle();
+    public float cellSize;
     public byte rows = 50;
     public byte columns = 50;
     byte[][] board = new byte[rows][columns];
     public float topRect = 0;
-    public float bottomRect = 30;
+    public float bottomRect = 0;
     public float leftRect = 0;
-    public float rightRect = 30;
+    public float rightRect = 0;
+    public boolean isAnimating;
+
 
 
     public GameViewer(Context context, AttributeSet attrs) {
         super(context, attrs);
+        startUpProcedures();
+    }
+
+    public void startUpProcedures() {
         aliveCellPaint.setColor(Color.BLACK);
         deadCellPaint.setColor(Color.WHITE);
         board[10][10]=1;
+        cellSize = Resources.getSystem().getDisplayMetrics().widthPixels / columns;
+        bottomRect = cellSize;
+        rightRect = cellSize;
     }
 
     @Override
     public void onDraw(Canvas canvas) {
-        canvas.drawRect(leftRect,topRect,rightRect,bottomRect,aliveCellPaint);
-
         for(int i = 0; i<rows; i++)
         {
             for(int j = 0; j<columns; j++)
@@ -58,27 +67,23 @@ class GameViewer extends View {
                 }else{
                     canvas.drawRect(leftRect,topRect,rightRect,bottomRect,aliveCellPaint);
                 }
-                leftRect += 30;
-                rightRect += 30;
+                leftRect += cellSize;
+                rightRect += cellSize;
             }
             leftRect = 0;
-            rightRect = 30;
-            topRect += 30;
-            bottomRect += 30;
+            rightRect = cellSize;
+            topRect += cellSize;
+            bottomRect += cellSize;
         }
+
+
+        if (isAnimating) {
+            /**
+             * Next gen call
+             * put thread to sleep to cap fps
+             */
+            invalidate(); //request new draw call
+        }
+
     }
 }
-
-/*
-class GameOfLifeBoard {
-    byte rows;
-    byte columns;
-
-    public GameOfLifeBoard(byte rows, byte columns){
-        this.rows=rows;
-        this.columns=columns;
-        byte[][] board = new byte[rows][columns];
-    }
-}
-*/
-
