@@ -6,4 +6,5 @@
     <string name="button_enter_text">Enter message</string>
     <string name="text_text_QR_hint">Enter message</string>
     <string name="button_send_text_to_QR">Convert text to QR GoL</string>
+    <string name="next_generation_button">Next Generation</string>
 </resources>
