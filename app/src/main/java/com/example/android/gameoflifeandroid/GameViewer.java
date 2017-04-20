@@ -5,21 +5,20 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.support.constraint.solver.widgets.Rectangle;
 import android.util.AttributeSet;
 import android.view.View;
 
 class GameViewer extends View {
-    Paint aliveCellPaint = new Paint();
-    Paint deadCellPaint = new Paint();
-    Rectangle aliveCell = new Rectangle();
-    Rectangle deadCell = new Rectangle();
+    public Paint aliveCellPaint = new Paint();
+    public Paint deadCellPaint = new Paint();
     public float cellSize;
-    public float topRect = 0;
-    public float bottomRect = 0;
-    public float leftRect = 0;
-    public float rightRect = 0;
-    Board board = new Board(20, 20);
+    public float topRect;
+    public float bottomRect;
+    public float leftRect;
+    public float rightRect;
+    public Board board = new Board(5, 5);
     byte[][] gameBoard = board.getBoard();
 
 
@@ -33,20 +32,18 @@ class GameViewer extends View {
         aliveCellPaint.setColor(Color.BLACK);
         deadCellPaint.setColor(Color.WHITE);
         cellSize = Resources.getSystem().getDisplayMetrics().widthPixels / board.xaxis;
-        bottomRect = cellSize;
-        rightRect = cellSize;
-        gameBoard[0][0] = 1;
-        gameBoard[19][19] = 1;
-        gameBoard[0][19] = 1;
-        gameBoard[19][0] = 1;
-        gameBoard[0][1] = 1;
-        gameBoard[0][2] = 1;
-        gameBoard[10][10] = 1;
-
+        gameBoard[2][2] = 1;
+        gameBoard[2][3] = 1;
+        gameBoard[3][2] = 1;
     }
 
     @Override
     public void onDraw(Canvas canvas) {
+        gameBoard = board.getBoard();
+        topRect = 0;
+        bottomRect = cellSize;
+        leftRect = 0;
+        rightRect = cellSize;
         for(int i = 0; i<board.yaxis; i++)
         {
             for(int j = 0; j<board.xaxis; j++)

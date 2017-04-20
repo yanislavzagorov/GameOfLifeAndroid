@@ -19,14 +19,16 @@ import android.view.View;
 public class TextQrGol extends AppCompatActivity {
     public  GameViewer gv;
 
-    public void nextGenerationButton(){
-
+    public void nextGenerationClick(View view){
+        gv.board.nextGeneration();
+        gv.invalidate();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_qr_gol);
+        Log.d("CREATION", "TextQrGol was created!");
 
         gv = (GameViewer)findViewById(R.id.game);
     }

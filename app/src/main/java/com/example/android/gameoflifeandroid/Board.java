@@ -121,21 +121,28 @@ public class Board {
      */
     @Override
     public String toString() {
-        if(board.length == 0) {
-            return "";
-        }
-
-        BoundingBox bb = getBoundingBox();
-        StringBuilder sb = new StringBuilder();
-        for(int i = bb.firstRow; i <= bb.lastRow; i++) {
-            for(int j = bb.firstCol; j <= bb.lastCol; j++) {
-                if (board[i][j] == 1) {
-                    sb.append("1");
-                } else {
-                    sb.append("0");
+//        String msg = "";
+//        for (byte[] row : board) {
+//            String s = "";
+//            for (int cell : row) {
+//                String val = cell == 1 ? "1 " : "0 ";
+//                s = s + val;
+//            }
+//            msg = msg + s + "\n";
+//        }
+//        return msg;
+        StringBuilder boardString = new StringBuilder();
+        for(int col = 0; col<yaxis; col++)
+        {
+            for(int row = 0; row<xaxis; row++)
+            {
+                if(board[col][row] == 0){
+                    boardString.append("0 ");
+                }else{
+                    boardString.append("1 ");
                 }
-            }
-        } return sb.toString();
+            } boardString.append("\n");
+        } return boardString.toString();
     }
 
     /**
