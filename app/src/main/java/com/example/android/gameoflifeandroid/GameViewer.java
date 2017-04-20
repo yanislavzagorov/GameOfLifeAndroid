@@ -18,8 +18,9 @@ class GameViewer extends View {
     public float bottomRect;
     public float leftRect;
     public float rightRect;
-    public Board board = new Board(5, 5);
+    public Board board = new Board(40, 40);
     byte[][] gameBoard = board.getBoard();
+    boolean isAnimating = false;
 
 
 
@@ -33,8 +34,10 @@ class GameViewer extends View {
         deadCellPaint.setColor(Color.WHITE);
         cellSize = Resources.getSystem().getDisplayMetrics().widthPixels / board.xaxis;
         gameBoard[2][2] = 1;
-        gameBoard[2][3] = 1;
-        gameBoard[3][2] = 1;
+        gameBoard[3][3] = 1;
+        gameBoard[3][4] = 1;
+        gameBoard[2][4] = 1;
+        gameBoard[1][4] = 1;
     }
 
     @Override
@@ -49,9 +52,9 @@ class GameViewer extends View {
             for(int j = 0; j<board.xaxis; j++)
             {
                 if(gameBoard[i][j] == 0){
-                    canvas.drawRect(leftRect,topRect,rightRect,bottomRect,deadCellPaint);
+                    canvas.drawRect(leftRect,topRect,rightRect-2,bottomRect-2,deadCellPaint);
                 }else{
-                    canvas.drawRect(leftRect,topRect,rightRect,bottomRect,aliveCellPaint);
+                    canvas.drawRect(leftRect,topRect,rightRect-2,bottomRect-2,aliveCellPaint);
                 }
                 leftRect += cellSize;
                 rightRect += cellSize;
@@ -60,6 +63,16 @@ class GameViewer extends View {
             rightRect = cellSize;
             topRect += cellSize;
             bottomRect += cellSize;
+        }
+
+        if (isAnimating) {
+            board.nextGeneration();
+            try {
+                Thread.sleep(100);
+            } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+            invalidate();
         }
     }
 }

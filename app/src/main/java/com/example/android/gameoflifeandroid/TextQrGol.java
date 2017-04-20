@@ -24,6 +24,15 @@ public class TextQrGol extends AppCompatActivity {
         gv.invalidate();
     }
 
+    public void startStopClick(View view){
+        gv.isAnimating = !gv.isAnimating;
+        gv.invalidate();
+    }
+
+    public void toggleButton(View view){
+        Log.d("Toggle", "AYY TOGGLED");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
