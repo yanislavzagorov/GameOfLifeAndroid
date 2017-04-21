@@ -10,4 +10,5 @@
     <string name="start_stop_button">Start / Stop</string>
     <string name="toggle_off">Start</string>
     <string name="toggle_on">Stop</string>
+    <string name="user_input">User input:</string>
 </resources>

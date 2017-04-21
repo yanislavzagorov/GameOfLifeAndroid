@@ -35,5 +35,29 @@
         app:layout_constraintRight_toRightOf="parent"
         android:onClick="startStopClick"/>
 
+    <TextView
+        android:id="@+id/inputTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toRightOf="@+id/userMessageTextView"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/startStopToggle" />
+
+    <TextView
+        android:id="@+id/userMessageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_input"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/inputTextView" />
+
 </android.support.constraint.ConstraintLayout>
 
