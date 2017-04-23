@@ -18,7 +18,7 @@ class GameViewer extends View {
     public float bottomRect;
     public float leftRect;
     public float rightRect;
-    public Board board = new Board(40, 40);
+    public Board board = new Board(100, 100);
     byte[][] gameBoard = board.getBoard();
     boolean isAnimating = false;
 
@@ -52,9 +52,9 @@ class GameViewer extends View {
             for(int j = 0; j<board.xaxis; j++)
             {
                 if(gameBoard[i][j] == 0){
-                    canvas.drawRect(leftRect,topRect,rightRect-2,bottomRect-2,deadCellPaint);
+                    canvas.drawRect(leftRect,topRect,rightRect-1,bottomRect-1,deadCellPaint);
                 }else{
-                    canvas.drawRect(leftRect,topRect,rightRect-2,bottomRect-2,aliveCellPaint);
+                    canvas.drawRect(leftRect,topRect,rightRect-1,bottomRect-1,aliveCellPaint);
                 }
                 leftRect += cellSize;
                 rightRect += cellSize;

@@ -3,6 +3,7 @@ package com.example.android.gameoflifeandroid;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -18,6 +19,18 @@ import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.Writer;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.google.zxing.qrcode.encoder.*;
+
+import java.util.EnumMap;
+import java.util.Map;
+
 public class TextQrGol extends AppCompatActivity {
     public  GameViewer gv;
 
@@ -31,18 +44,40 @@ public class TextQrGol extends AppCompatActivity {
         gv.invalidate();
     }
 
+    public static byte[][] qrCodeEncoder(String stringToQr, int size){
+        BitMatrix bitMatrix = new BitMatrix(size, size);
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        byte[][] byteArray = new byte[size][size];
+        try {
+            bitMatrix = qrCodeWriter.encode(stringToQr, BarcodeFormat.QR_CODE, size, size);
+        } catch (WriterException we) {
+            Log.d("EXCEPTION", " " + we);
+        }
+
+        for (int yaxis = 0; yaxis < size; yaxis++){
+            for (int xaxis = 0; xaxis < size; xaxis++){
+                if (bitMatrix.get(xaxis, yaxis)) {
+                    byteArray[yaxis][xaxis] = 1;
+                } else {
+                    byteArray[yaxis][xaxis] = 0;
+                }
+            }
+        }
+        return byteArray;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_qr_gol);
         gv = (GameViewer)findViewById(R.id.game);
-
-        // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String QrMessage = intent.getStringExtra(TextQRActivity.EXTRA_MESSAGE);
-
-        // Capture the layout's TextView and set the string as its text
+        String qrMessageString = intent.getStringExtra(TextQRActivity.EXTRA_MESSAGE);
         TextView textView = (TextView) findViewById(R.id.inputTextView);
-        textView.setText(QrMessage);
+
+        gv.board.setBoard(qrCodeEncoder(qrMessageString, 100));
+        if (qrMessageString.length() > 80){
+            textView.setText(qrMessageString.substring(0, 80) + " (...)");
+        }
     }
 }
