@@ -34,16 +34,37 @@ import java.util.Map;
 public class TextQrGol extends AppCompatActivity {
     public  GameViewer gv;
 
+    /**
+     * Calls nextGeneration onClick.
+     *
+     * @param view Current view.
+     */
     public void nextGenerationClick(View view){
         gv.board.nextGeneration();
         gv.invalidate();
     }
 
+    /**
+     * Handles stopStart onClick.
+     *
+     * @param view Current view.
+     */
     public void startStopClick(View view){
-        gv.isAnimating = !gv.isAnimating;
+        byte[][] newboard = new byte[100][100];
+        newboard[99][99]=1;
+        newboard[97][97]=1;
+        newboard[0][0] = 1;
+        gv.board.setBoard(newboard);
         gv.invalidate();
     }
 
+    /**
+     * Encodes a String to a BitMatrix and returns the code as a 2D byte array.
+     *
+     * @param stringToQr The string that will be encoded into a BitMatrix
+     * @param size the width and height of the BitMatrix
+     * @return 2D byte array of the QR-Code.
+     */
     public static byte[][] qrCodeEncoder(String stringToQr, int size){
         BitMatrix bitMatrix = new BitMatrix(size, size);
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
@@ -66,6 +87,11 @@ public class TextQrGol extends AppCompatActivity {
         return byteArray;
     }
 
+    /**
+     * onCreate method for TextQrGol class.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +102,9 @@ public class TextQrGol extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.inputTextView);
 
         gv.board.setBoard(qrCodeEncoder(qrMessageString, 100));
-        if (qrMessageString.length() > 80){
+        if (qrMessageString.length() < 80){
+            textView.setText(qrMessageString);
+        }else {
             textView.setText(qrMessageString.substring(0, 80) + " (...)");
         }
     }

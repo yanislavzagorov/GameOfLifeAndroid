@@ -12,6 +12,12 @@ import android.widget.Toast;
 public class TextQRActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.android.gameoflifeandroid.MESSAGE";
 
+    /**
+     * DescriptionOfMethod.
+     *
+     * @param nameOfReturn Description.
+     * @return DescriptionOfReturn.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +25,12 @@ public class TextQRActivity extends AppCompatActivity {
         Log.d("CREATION", "TextQRActivity was created!");
     }
 
+    /**
+     * DescriptionOfMethod.
+     *
+     * @param nameOfReturn Description.
+     * @return DescriptionOfReturn.
+     */
     public void convertTextToQR(View view) {
         Intent textQrIntent = new Intent(this, TextQrGol.class);
         EditText editText = (EditText) findViewById(R.id.editText);
@@ -28,8 +40,15 @@ public class TextQRActivity extends AppCompatActivity {
             CharSequence text = "Please use less than 500 characters." + "\nCurrently you are using " + message.length() + " characters." ;
             int duration = Toast.LENGTH_LONG;
 
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+            Toast tooLongToast = Toast.makeText(context, text, duration);
+            tooLongToast.show();
+        }else if (message.length() == 0) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please enter a message." ;
+            int duration = Toast.LENGTH_LONG;
+
+            Toast tooShortToast = Toast.makeText(context, text, duration);
+            tooShortToast.show();
         }else {
             textQrIntent.putExtra(EXTRA_MESSAGE, message);
             startActivity(textQrIntent);

@@ -23,23 +23,37 @@ class GameViewer extends View {
     boolean isAnimating = false;
 
 
-
+    /**
+     * DescriptionOfMethod.
+     *
+     * @param nameOfReturn Description.
+     * @return DescriptionOfReturn.
+     */
     public GameViewer(Context context, AttributeSet attrs) {
         super(context, attrs);
         startUpProcedures();
     }
 
+    /**
+     * DescriptionOfMethod.
+     *
+     * @param nameOfReturn Description.
+     * @return DescriptionOfReturn.
+     */
     public void startUpProcedures() {
         aliveCellPaint.setColor(Color.BLACK);
         deadCellPaint.setColor(Color.WHITE);
-        cellSize = Resources.getSystem().getDisplayMetrics().widthPixels / board.xaxis;
-        gameBoard[2][2] = 1;
-        gameBoard[3][3] = 1;
-        gameBoard[3][4] = 1;
-        gameBoard[2][4] = 1;
-        gameBoard[1][4] = 1;
+
+        // The added +1 is to account for the decimals lost when widthPixels/xaxis gets made into an int.
+        cellSize = (Resources.getSystem().getDisplayMetrics().widthPixels / board.xaxis) + 1;
     }
 
+    /**
+     * DescriptionOfMethod.
+     *
+     * @param nameOfReturn Description.
+     * @return DescriptionOfReturn.
+     */
     @Override
     public void onDraw(Canvas canvas) {
         gameBoard = board.getBoard();
@@ -68,7 +82,7 @@ class GameViewer extends View {
         if (isAnimating) {
             board.nextGeneration();
             try {
-                Thread.sleep(100);
+                Thread.sleep(300);
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
