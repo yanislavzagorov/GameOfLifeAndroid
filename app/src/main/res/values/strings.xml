@@ -11,4 +11,5 @@
     <string name="toggle_off">Start</string>
     <string name="toggle_on">Stop</string>
     <string name="user_input">User input:</string>
+    <string name="about_button">About</string>
 </resources>

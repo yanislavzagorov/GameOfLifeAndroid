@@ -29,4 +29,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TextQRActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * DescriptionOfMethod.
+     *
+     * @param nameOfReturn Description.
+     * @return DescriptionOfReturn.
+     */
+    public void aboutButton(View view) {
+        ToastLibrary.longToast(getApplicationContext(), "Current feature set: \n• Text-To-QR Game of Life\n• More coming soon\n\nProgramutvikling DATS1600");
+    }
 }

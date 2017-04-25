@@ -50,11 +50,7 @@ public class TextQrGol extends AppCompatActivity {
      * @param view Current view.
      */
     public void startStopClick(View view){
-        byte[][] newboard = new byte[100][100];
-        newboard[99][99]=1;
-        newboard[97][97]=1;
-        newboard[0][0] = 1;
-        gv.board.setBoard(newboard);
+        gv.isAnimating = !gv.isAnimating;
         gv.invalidate();
     }
 

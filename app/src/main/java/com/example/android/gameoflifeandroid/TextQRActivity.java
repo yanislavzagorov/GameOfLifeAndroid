@@ -36,19 +36,9 @@ public class TextQRActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.editText);
         String message = editText.getText().toString();
         if (message.length() > 500){
-            Context context = getApplicationContext();
-            CharSequence text = "Please use less than 500 characters." + "\nCurrently you are using " + message.length() + " characters." ;
-            int duration = Toast.LENGTH_LONG;
-
-            Toast tooLongToast = Toast.makeText(context, text, duration);
-            tooLongToast.show();
+            ToastLibrary.longToast(getApplicationContext(), "Please use less than 500 characters." + "\nCurrently you are using " + message.length() + " characters.");
         }else if (message.length() == 0) {
-            Context context = getApplicationContext();
-            CharSequence text = "Please enter a message." ;
-            int duration = Toast.LENGTH_LONG;
-
-            Toast tooShortToast = Toast.makeText(context, text, duration);
-            tooShortToast.show();
+            ToastLibrary.longToast(getApplicationContext(), "Please enter a message.");
         }else {
             textQrIntent.putExtra(EXTRA_MESSAGE, message);
             startActivity(textQrIntent);
