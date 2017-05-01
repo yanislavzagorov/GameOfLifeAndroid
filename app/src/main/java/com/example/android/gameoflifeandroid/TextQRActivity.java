@@ -38,7 +38,7 @@ public class TextQRActivity extends AppCompatActivity {
         if (message.length() > 500){
             ToastLibrary.longToast(getApplicationContext(), "Please use less than 500 characters." + "\nCurrently you are using " + message.length() + " characters.");
         }else if (message.length() == 0) {
-            ToastLibrary.longToast(getApplicationContext(), "Please enter a message.");
+            ToastLibrary.shortToast(getApplicationContext(), "Please enter a message.");
         }else {
             textQrIntent.putExtra(EXTRA_MESSAGE, message);
             startActivity(textQrIntent);
