@@ -5,6 +5,15 @@ class BoundingBox {
     int firstCol;
     int lastRow;
     int lastCol;
+
+    /**
+     * Constructor for the bounding box.
+     *
+     * @param firstRow
+     * @param firstCol
+     * @param lastRow
+     * @param lastCol
+     */
     BoundingBox(int firstRow, int firstCol, int lastRow, int lastCol) {
         this.firstRow = firstRow;
         this.firstCol = firstCol;
@@ -24,14 +33,14 @@ public class Board {
      * @param xaxis int length of the board
      * @param yaxis int height of the board
      */
-    public Board(int xaxis, int yaxis){
+    public Board(int xaxis, int yaxis) {
         this.xaxis=xaxis;
         this.yaxis=yaxis;
         board = new byte[yaxis][xaxis];
     }
 
     /**
-     * Creates and stores the next generation of the current board, then sets the stored board as the board
+     * Creates and stores the next generation of the current board, then sets the stored board as the board.
      */
     public void nextGeneration() {
         byte[][] newBoard = new byte[board.length][board[0].length];
@@ -49,7 +58,7 @@ public class Board {
     }
 
     /**
-     * Decides if a cell has to be dead or alive for the nextGeneration method
+     * Decides if a cell has to be dead or alive for the nextGeneration method.
      *
      * @param cell int tells if cell is dead (0) or alive (1)
      * @param num int amount of neighbours the target cell has (0 to 8)
@@ -69,7 +78,7 @@ public class Board {
     }
 
     /**
-     * Method for checking a cells neighbour count
+     * Method for checking a cells neighbour count.
      *
      * @param ox int x-position of cell
      * @param oy int y-position of cell
@@ -99,7 +108,7 @@ public class Board {
     }
 
     /**
-     * Makes the coordinate wrap around to the other side of the board if it is out of bounds
+     * Makes the coordinate wrap around to the other side of the board if it is out of bounds.
      * @param lim int
      * @param val int
      * @return int
@@ -115,7 +124,7 @@ public class Board {
     }
 
     /**
-     * Overrides toString. Transforms the board to a single String of 0/1
+     * Overrides toString. Transforms the board to a single String of 0/1.
      *
      * @return String of 1 and 0 representing the byte[][] array
      */
@@ -132,17 +141,17 @@ public class Board {
 //        }
 //        return msg;
         StringBuilder boardString = new StringBuilder();
-        for(int col = 0; col<yaxis; col++)
-        {
-            for(int row = 0; row<xaxis; row++)
-            {
-                if(board[col][row] == 0){
+        for(int col = 0; col<yaxis; col++) {
+            for(int row = 0; row<xaxis; row++) {
+                if(board[col][row] == 0) {
                     boardString.append("0 ");
-                }else{
+                } else {
                     boardString.append("1 ");
                 }
-            } boardString.append("\n");
-        } return boardString.toString();
+            }
+            boardString.append("\n");
+        }
+        return boardString.toString();
     }
 
     /**
@@ -165,6 +174,11 @@ public class Board {
         board = newBoard;
     }
 
+    /**
+     * getBoundingBox method for the bounding box
+     *
+     * @return the bounding box
+     */
     public BoundingBox getBoundingBox() {
         BoundingBox bb = new BoundingBox(board.length, board[0].length, 0, 0);
         for(int i = 0; i < board.length; i++) {
@@ -192,5 +206,4 @@ public class Board {
         System.out.println("maxcolumn: " + bb.lastCol);
         return bb;
     }
-
 }
