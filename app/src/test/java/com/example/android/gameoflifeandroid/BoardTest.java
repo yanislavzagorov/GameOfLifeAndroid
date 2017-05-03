@@ -22,7 +22,26 @@ public class BoardTest {
         testGrid.setBoard(testBoard);
 
         testGrid.nextGeneration();
-        assertEquals("000000000", testGrid.toString());
+        assertEquals("0 0 0 \n" +
+                     "0 0 0 \n" +
+                     "0 0 0 \n", testGrid.toString());
     }
 
+    @Test
+    public void square_remains_square() {
+        byte[][] testBoard = {
+                {0,0,0,0},
+                {0,1,1,0},
+                {0,1,1,0},
+                {0,0,0,0}
+        };
+        Board testGrid = new Board(4, 4);
+        testGrid.setBoard(testBoard);
+
+        testGrid.nextGeneration();
+        assertEquals("0 0 0 0 \n" +
+                     "0 1 1 0 \n" +
+                     "0 1 1 0 \n" +
+                     "0 0 0 0 \n", testGrid.toString());
+    }
 }

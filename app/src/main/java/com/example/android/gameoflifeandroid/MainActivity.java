@@ -8,10 +8,10 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     /**
-     * DescriptionOfMethod.
+     * Overrides onCreate method.
+     * Initialize the activity. Defining UI with calling setContentView.
      *
-     * @param nameOfReturn Description.
-     * @return DescriptionOfReturn.
+     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +20,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * DescriptionOfMethod.
+     * Method for the QR button.
      *
-     * @param nameOfReturn Description.
-     * @return DescriptionOfReturn.
+     * @param view
      */
     public void textQRButton(View view) {
         Intent intent = new Intent(this, TextQRActivity.class);
@@ -31,12 +30,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * DescriptionOfMethod.
+     * Method for the about button.
      *
-     * @param nameOfReturn Description.
-     * @return DescriptionOfReturn.
+     * @param view
      */
     public void aboutButton(View view) {
-        ToastLibrary.longToast(getApplicationContext(), "Current feature set: \n• Text-To-QR Game of Life\n• More coming soon\n\nProgramutvikling DATS1600");
+        ToastLibrary.longToast(getApplicationContext(), "Current feature set:"
+                                                        + "\n• Text-To-QR Game of Life"
+                                                        + "\n\nProgramutvikling DATS1600");
     }
 }
