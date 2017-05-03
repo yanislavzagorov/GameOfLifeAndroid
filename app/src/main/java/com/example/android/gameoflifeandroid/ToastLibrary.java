@@ -9,10 +9,10 @@ public class ToastLibrary {
     }
 
     /**
-     * DescriptionOfMethod.
+     * DescriptionOfMethod
      *
-     * @param nameOfReturn Description.
-     * @return DescriptionOfReturn.
+     * @param context
+     * @param string
      */
     public static void longToast(Context context, String string) {
         CharSequence text = string;

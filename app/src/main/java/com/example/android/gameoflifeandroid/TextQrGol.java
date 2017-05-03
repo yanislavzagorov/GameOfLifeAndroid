@@ -39,7 +39,7 @@ public class TextQrGol extends AppCompatActivity {
      *
      * @param view Current view.
      */
-    public void nextGenerationClick(View view){
+    public void nextGenerationClick(View view) {
         gv.board.nextGeneration();
         gv.invalidate();
     }
@@ -49,7 +49,7 @@ public class TextQrGol extends AppCompatActivity {
      *
      * @param view Current view.
      */
-    public void startStopClick(View view){
+    public void startStopClick(View view) {
         gv.isAnimating = !gv.isAnimating;
         gv.invalidate();
     }
@@ -61,7 +61,7 @@ public class TextQrGol extends AppCompatActivity {
      * @param size the width and height of the BitMatrix
      * @return 2D byte array of the QR-Code.
      */
-    public static byte[][] qrCodeEncoder(String stringToQr, int size){
+    public static byte[][] qrCodeEncoder(String stringToQr, int size) {
         BitMatrix bitMatrix = new BitMatrix(size, size);
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         byte[][] byteArray = new byte[size][size];
@@ -71,8 +71,8 @@ public class TextQrGol extends AppCompatActivity {
             Log.d("EXCEPTION", " " + we);
         }
 
-        for (int yaxis = 0; yaxis < size; yaxis++){
-            for (int xaxis = 0; xaxis < size; xaxis++){
+        for (int yaxis = 0; yaxis < size; yaxis++) {
+            for (int xaxis = 0; xaxis < size; xaxis++) {
                 if (bitMatrix.get(xaxis, yaxis)) {
                     byteArray[yaxis][xaxis] = 1;
                 } else {
@@ -98,9 +98,9 @@ public class TextQrGol extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.inputTextView);
 
         gv.board.setBoard(qrCodeEncoder(qrMessageString, 100));
-        if (qrMessageString.length() < 80){
+        if (qrMessageString.length() < 80) {
             textView.setText(qrMessageString);
-        }else {
+        } else {
             textView.setText(qrMessageString.substring(0, 80) + " (...)");
         }
     }
