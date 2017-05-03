@@ -24,10 +24,10 @@ class GameViewer extends View {
 
 
     /**
-     * DescriptionOfMethod.
+     * Constructor for the game viewer.
      *
-     * @param nameOfReturn Description.
-     * @return DescriptionOfReturn.
+     * @param context
+     * @param attrs
      */
     public GameViewer(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -35,10 +35,7 @@ class GameViewer extends View {
     }
 
     /**
-     * DescriptionOfMethod.
-     *
-     * @param nameOfReturn Description.
-     * @return DescriptionOfReturn.
+     * Method that sets aliveCellPaint to black and deadCellPaint to white.
      */
     public void startUpProcedures() {
         aliveCellPaint.setColor(Color.BLACK);
@@ -49,10 +46,9 @@ class GameViewer extends View {
     }
 
     /**
-     * DescriptionOfMethod.
+     * Overrides onDraw method. Draws the board.
      *
-     * @param nameOfReturn Description.
-     * @return DescriptionOfReturn.
+     * @param canvas
      */
     @Override
     public void onDraw(Canvas canvas) {
@@ -61,13 +57,11 @@ class GameViewer extends View {
         bottomRect = cellSize;
         leftRect = 0;
         rightRect = cellSize;
-        for(int i = 0; i<board.yaxis; i++)
-        {
-            for(int j = 0; j<board.xaxis; j++)
-            {
+        for(int i = 0; i<board.yaxis; i++) {
+            for(int j = 0; j<board.xaxis; j++) {
                 if(gameBoard[i][j] == 0){
                     canvas.drawRect(leftRect,topRect,rightRect-1,bottomRect-1,deadCellPaint);
-                }else{
+                } else {
                     canvas.drawRect(leftRect,topRect,rightRect-1,bottomRect-1,aliveCellPaint);
                 }
                 leftRect += cellSize;
