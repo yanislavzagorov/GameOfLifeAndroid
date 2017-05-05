@@ -130,16 +130,6 @@ public class Board {
      */
     @Override
     public String toString() {
-//        String msg = "";
-//        for (byte[] row : board) {
-//            String s = "";
-//            for (int cell : row) {
-//                String val = cell == 1 ? "1 " : "0 ";
-//                s = s + val;
-//            }
-//            msg = msg + s + "\n";
-//        }
-//        return msg;
         StringBuilder boardString = new StringBuilder();
         for(int col = 0; col<yaxis; col++) {
             for(int row = 0; row<xaxis; row++) {
