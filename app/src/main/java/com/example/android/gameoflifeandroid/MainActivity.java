@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     public void aboutButton(View view) {
         ToastLibrary.longToast(getApplicationContext(), "Current feature set:"
                                                         + "\n• Text-To-QR Game of Life"
+                                                        + "\n• Frame-by-frame or running animation"
+
+                                                        + "\n\nComing soon:"
+                                                        + "\n• Touch-draw support"
+                                                        + "\n• GoL QR mesh to text exporter"
+
                                                         + "\n\nProgramutvikling DATS1600");
     }
 }

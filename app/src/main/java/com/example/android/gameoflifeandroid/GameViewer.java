@@ -10,7 +10,7 @@ import android.support.constraint.solver.widgets.Rectangle;
 import android.util.AttributeSet;
 import android.view.View;
 
-class GameViewer extends View {
+public class GameViewer extends View {
     public Paint aliveCellPaint = new Paint();
     public Paint deadCellPaint = new Paint();
     public float cellSize;

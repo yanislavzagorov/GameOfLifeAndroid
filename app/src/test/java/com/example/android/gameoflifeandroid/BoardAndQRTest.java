@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class BoardTest {
+public class BoardAndQRTest {
 
     @Test
     public void single_dot_dies() {
@@ -89,5 +89,4 @@ public class BoardTest {
 
         assertEquals(testBoard.toString(), expectedQrCode);
     }
-
 }

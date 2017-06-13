@@ -27,9 +27,11 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.qrcode.encoder.*;
-
 import java.util.EnumMap;
 import java.util.Map;
+import com.google.android.gms.ads.MobileAds;
+
+import static com.example.android.gameoflifeandroid.TextQRActivity.EXTRA_MESSAGE;
 
 public class TextQrGol extends AppCompatActivity {
     public  GameViewer gv;
@@ -93,15 +95,21 @@ public class TextQrGol extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_qr_gol);
         gv = (GameViewer)findViewById(R.id.game);
-        Intent intent = getIntent();
-        String qrMessageString = intent.getStringExtra(TextQRActivity.EXTRA_MESSAGE);
+        Bundle extras = getIntent().getBundleExtra("EXTRA_BUNDLE");
+        //String qrMessageString = intent.getStringExtra(TextQRActivity.EXTRA_MESSAGE);
+        String qrMessageString = extras.getString(EXTRA_MESSAGE);
+        boolean isSwitched = extras.getBoolean("EXTRA_SWITCH");
         TextView textView = (TextView) findViewById(R.id.inputTextView);
-
         gv.board.setBoard(qrCodeEncoder(qrMessageString, 100));
-        if (qrMessageString.length() < 80) {
-            textView.setText(qrMessageString);
-        } else {
-            textView.setText(qrMessageString.substring(0, 80) + " (...)");
+
+        if(!isSwitched) {
+            if (qrMessageString.length() < 80) {
+                textView.setText(qrMessageString);
+            } else {
+                textView.setText(qrMessageString.substring(0, 80) + " (...)");
+            }
+        }else {
+            textView.setText("Message hidden  \uD83D\uDC40");
         }
     }
 }
