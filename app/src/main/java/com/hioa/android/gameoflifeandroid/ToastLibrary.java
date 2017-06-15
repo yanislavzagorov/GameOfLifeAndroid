@@ -1,4 +1,4 @@
-package com.example.android.gameoflifeandroid;
+package com.hioa.android.gameoflifeandroid;
 
 import android.content.Context;
 import android.widget.Toast;

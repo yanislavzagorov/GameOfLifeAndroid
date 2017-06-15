@@ -1,12 +1,10 @@
-package com.example.android.gameoflifeandroid;
+package com.hioa.android.gameoflifeandroid;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.RectF;
-import android.support.constraint.solver.widgets.Rectangle;
 import android.util.AttributeSet;
 import android.view.View;
 

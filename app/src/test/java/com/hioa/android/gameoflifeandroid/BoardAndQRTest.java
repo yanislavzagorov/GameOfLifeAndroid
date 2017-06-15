@@ -1,11 +1,8 @@
-package com.example.android.gameoflifeandroid;
-
-import android.content.Intent;
-import android.widget.TextView;
+package com.hioa.android.gameoflifeandroid;
 
 import org.junit.Test;
 
-import static com.example.android.gameoflifeandroid.TextQrGol.qrCodeEncoder;
+import static com.hioa.android.gameoflifeandroid.TextQrGol.qrCodeEncoder;
 import static org.junit.Assert.*;
 
 /**

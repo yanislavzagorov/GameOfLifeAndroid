@@ -1,6 +1,5 @@
-package com.example.android.gameoflifeandroid;
+package com.hioa.android.gameoflifeandroid;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import com.google.android.gms.ads.AdRequest;
@@ -17,7 +15,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 public class TextQRActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE = "com.example.android.gameoflifeandroid.MESSAGE";
+    public static final String EXTRA_MESSAGE = "com.example.android.com.android.gameoflifeandroid.MESSAGE";
     public Switch messageSwitch;
     public boolean isSwitched = false;
 

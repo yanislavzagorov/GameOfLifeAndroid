@@ -1,4 +1,4 @@
-package com.example.android.gameoflifeandroid;
+package com.hioa.android.gameoflifeandroid;
 
 class BoundingBox {
     int firstRow;

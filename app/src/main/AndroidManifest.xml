@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.gameoflifeandroid">
+    package="com.hioa.android.gameoflifeandroid">
 
     <application
         android:allowBackup="true"
@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity">
+            android:name="com.hioa.android.com.android.gameoflifeandroid.MainActivity">
 
         </activity>
         <activity
-            android:name=".TextQRActivity">
+            android:name="com.hioa.android.com.android.gameoflifeandroid.TextQRActivity">
             <!--    android:parentActivityName=".MainActivity">     -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TextQrGol"
-            android:parentActivityName=".TextQRActivity">
+            android:name="com.hioa.android.com.android.gameoflifeandroid.TextQrGol"
+            android:parentActivityName="com.hioa.android.com.android.gameoflifeandroid.TextQRActivity">
         </activity>
     </application>
 
